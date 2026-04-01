@@ -1,18 +1,21 @@
 from PySide6.QtWidgets import QMainWindow, QLabel, QVBoxLayout, QWidget, QBoxLayout
 from PySide6.QtCore import Qt
 from PySide6.QtSvgWidgets import QSvgWidget
-from PySide6.QtGui import QIcon, QFont
+from PySide6.QtGui import QFont, QPixmap
 
-from .theme.icon import RATBERT_SVG as RATBERT
+from .theme.icon import RATBERT
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         
         self.resize(400, 400)
-        
-        svg_widget = QSvgWidget(RATBERT)
-        svg_widget.setFixedSize(200, 200)
+
+        pixLabel = QLabel()
+        pixmap = QPixmap(RATBERT)
+        pixmap = pixmap.scaled(200, 200, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        pixLabel.setPixmap(pixmap)
+        pixLabel.setFixedSize(200, 200)
 
         label = QLabel("RATBERT")
         label.setAlignment(Qt.AlignHCenter)
@@ -23,7 +26,7 @@ class MainWindow(QMainWindow):
 
         layout = QVBoxLayout()
         layout.addStretch()
-        layout.addWidget(svg_widget, alignment=Qt.AlignHCenter)
+        layout.addWidget(pixLabel, alignment=Qt.AlignHCenter)
         layout.addWidget(label, alignment=Qt.AlignHCenter)
         layout.addStretch()
 

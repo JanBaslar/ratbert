@@ -4,7 +4,7 @@ from PySide6.QtWidgets import QApplication
 from PySide6.QtGui import QIcon
 
 from widget.main_window import MainWindow
-from widget.theme.icon import RATBERT_PNG as RATBERT
+from widget.theme.icon import RATBERT
 
 def _set_taskbar_icon(app: QApplication) -> None:
     """Set the taskbar icon for the application."""
